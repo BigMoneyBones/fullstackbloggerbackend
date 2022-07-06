@@ -8,9 +8,9 @@ router.get("/hello-blogs", (req, res) => {
 
 router.get("/all-blogs", async (req, res) => {
   try {
-    // const collection = await blogsDB().collection("blogPosts");
-    const posts = await collection.find({});
-    res.send(posts);
+    const collection = await blogsDB().collection("blogs50");
+    const posts = await collection.find({}).toArray();
+    res.json(posts);
   } catch (error) {
     res.status(500).send("error fetching posts " + error);
   }
